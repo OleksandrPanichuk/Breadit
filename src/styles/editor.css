@@ -93,23 +93,23 @@ mark.cdx-marker {
 
 
 h1.ce-header {
-	@apply text-3xl font-bold;
+	@apply text-4xl font-bold;
 }
 
 h2.ce-header {
-	@apply text-2xl font-semibold;
+	@apply text-3xl font-semibold;
 }
 
 h3.ce-header {
-	@apply text-xl font-semibold;
+	@apply text-2xl font-semibold;
 }
 
 h4.ce-header {
-	@apply text-lg font-semibold;
+	@apply text-xl font-semibold;
 }
 
 h5.ce-header {
-	@apply text-base font-semibold;
+	@apply text-lg font-semibold;
 }
 
 h6.ce-header {
