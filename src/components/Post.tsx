@@ -1,7 +1,7 @@
 import { formatTimeToNow } from '@/lib/utils'
 import { MessageSquare } from 'lucide-react'
 import Link from 'next/link'
-import { useRef, FC } from 'react'
+import { useRef, FC, memo } from 'react'
 
 import PostVoteClient from './post-vote/PostVoteClient'
 import { Post, User, Vote } from '@prisma/client'
@@ -19,13 +19,13 @@ interface IPostProps {
 	currentVote?: PartialVote
 }
 
-const Post: FC<IPostProps> = ({
+const Post = memo(({
 	post,
 	subredditName,
 	commentAmt,
 	votesAmt,
 	currentVote
-}) => {
+}: IPostProps) => {
 	const pRef = useRef<HTMLDivElement>(null)
 	return (
 		<div className="rounded-md bg-white shadow">
@@ -83,6 +83,8 @@ const Post: FC<IPostProps> = ({
 			</div>
 		</div>
 	)
-}
+})
+
+Post.displayName = 'Post'
 
 export default Post
