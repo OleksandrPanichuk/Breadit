@@ -2,9 +2,10 @@ import { formatTimeToNow } from '@/lib/utils'
 import { MessageSquare } from 'lucide-react'
 import Link from 'next/link'
 import { useRef, FC } from 'react'
-import EditorOutput from './EditorOutput'
+
 import PostVoteClient from './post-vote/PostVoteClient'
 import { Post, User, Vote } from '@prisma/client'
+import EditorOutput from './editorjs-renderer'
 
 type PartialVote = Pick<Vote, 'type'>
 interface IPostProps {
@@ -33,7 +34,7 @@ const Post: FC<IPostProps> = ({
 					initialVotesAmt={votesAmt}
 					postId={post.id}
 					initialVote={currentVote?.type}
-					className='flex-col'
+					className="flex-col"
 				/>
 
 				<div className="w-0 flex-1">
@@ -62,7 +63,10 @@ const Post: FC<IPostProps> = ({
 						className="relative text-sm max-h-40 w-full overflow-clip"
 						ref={pRef}
 					>
-						<EditorOutput content={post.content} />
+						{post.content && (
+							//@ts-ignore
+							<EditorOutput data={post.content} />
+						)}
 						{pRef.current?.clientHeight === 160 && (
 							<div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-white to-transparent" />
 						)}

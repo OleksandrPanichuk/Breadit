@@ -88,7 +88,11 @@ const Editor = ({ subredditId }: { subredditId: string }) => {
 				inlineToolbar: true,
 				data: { blocks: [] },
 				tools: {
-					header: Header,
+					header: {
+						//@ts-ignore
+						class: Header,
+						inlineToolbar: true
+					},
 					linkTool: {
 						class: LinkTool,
 						config: {
@@ -112,7 +116,10 @@ const Editor = ({ subredditId }: { subredditId: string }) => {
 							}
 						}
 					},
-					list: List,
+					list: {
+						class: List,
+						inlineToolbar: true
+					},
 					code: Code,
 					inlineCode: InlineCode,
 					table: Table,
@@ -193,7 +200,7 @@ const Editor = ({ subredditId }: { subredditId: string }) => {
 						placeholder="title"
 						className="w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none"
 					/>
-					<div id="editor" className="min-h-[500px]" />
+					<div id="editor" className={'min-h-[15.625rem]'} />
 					<p className="text-sm text-gray-500">
 						Use{' '}
 						<kbd className="rounded-md border bg-muted px-1 text-xs uppercase">

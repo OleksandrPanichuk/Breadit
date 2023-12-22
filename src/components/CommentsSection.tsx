@@ -17,7 +17,6 @@ type ReplyComment = Comment & {
 
 interface CommentsSectionProps {
   postId: string
-  comments: ExtendedComment[]
 }
 
 const CommentsSection = async ({ postId }: CommentsSectionProps) => {

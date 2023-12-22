@@ -40,20 +40,20 @@ const PostFeed: React.FunctionComponent<IPostFeedProps> = ({
 			getNextPageParam: (_, pages) => {
 				return pages.length + 1
 			},
-			initialData: { pages: [initialPosts], pageParams: [1] }
+			initialData: { pages: [initialPosts], pageParams: [1] },
 		}
 	)
 	const posts = data?.pages.flatMap((page) => page) ?? initialPosts
 
 	useEffect(() => {
-		if(entry?.isIntersecting) {
-      fetchNextPage()
+		if (entry?.isIntersecting) {
+			fetchNextPage()
 		}
 	}, [entry, fetchNextPage])
 
 	return (
 		<ul className="flex flex-col col-span-2 space-y-6">
-			{posts.map((post, i) => {
+			{posts?.map((post, i) => {
 				const votesAmt = post.votes.reduce((acc, vote) => {
 					if (vote.type === 'UP') return acc + 1
 					if (vote.type === 'DOWN') return acc - 1
@@ -91,10 +91,10 @@ const PostFeed: React.FunctionComponent<IPostFeedProps> = ({
 				)
 			})}
 			{isFetchingNextPage && (
-        <li className='flex justify-center'>
-          <Loader2 className='w-6 h-6 text-zinc-500 animate-spin' />
-        </li>
-      )}
+				<li className="flex justify-center">
+					<Loader2 className="w-6 h-6 text-zinc-500 animate-spin" />
+				</li>
+			)}
 		</ul>
 	)
 }
